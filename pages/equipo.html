@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistencia del equipo | Control de Asistencia</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-roles="SUPERVISOR">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Control de Asistencia</div>
+      <nav id="menu"></nav>
+      <button id="btnSalir" class="btn btn-secundario">Cerrar sesión</button>
+    </aside>
+
+    <div class="contenido">
+      <header class="topbar">
+        <h2>Asistencia del equipo</h2>
+        <div class="usuario-info">
+          <span id="nombreUsuario"></span>
+          <span id="rolUsuario" class="rol-tag"></span>
+        </div>
+      </header>
+
+      <main class="pagina">
+        <section class="grid-indicadores">
+          <div class="card indicador"><span>Integrantes</span><strong id="indIntegrantes">0</strong></div>
+          <div class="card indicador verde"><span>Asistieron</span><strong id="indAsistieron">0</strong></div>
+          <div class="card indicador naranja"><span>Tardanzas</span><strong id="indTardanzas">0</strong></div>
+          <div class="card indicador rojo"><span>Faltas</span><strong id="indFaltas">0</strong></div>
+        </section>
+
+        <section class="card">
+          <h3>Registros</h3>
+
+          <div class="filtros">
+            <div class="form-grupo">
+              <label for="filtroFecha">Fecha</label>
+              <input type="date" id="filtroFecha">
+            </div>
+            <div class="form-grupo">
+              <label for="filtroEmpleado">Empleado</label>
+              <select id="filtroEmpleado">
+                <option value="">Todos</option>
+              </select>
+            </div>
+            <div class="form-grupo">
+              <label for="filtroEstado">Estado</label>
+              <select id="filtroEstado">
+                <option value="">Todos</option>
+                <option value="PRESENTE">Presente</option>
+                <option value="TARDANZA">Tardanza</option>
+                <option value="AUSENTE">Falta</option>
+                <option value="INCOMPLETA">Incompleta</option>
+                <option value="JUSTIFICADO">Justificado</option>
+                <option value="PERMISO">Permiso</option>
+              </select>
+            </div>
+            <button id="btnLimpiar" class="btn btn-secundario">Limpiar filtros</button>
+          </div>
+
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Código</th><th>Empleado</th><th>Fecha</th>
+                  <th>Entrada</th><th>Salida</th><th>Horas</th><th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="tablaEquipo"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/equipo.js"></script>
+</body>
+</html>

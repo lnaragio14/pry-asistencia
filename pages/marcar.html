@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcar asistencia | Control de Asistencia</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-roles="EMPLEADO,SUPERVISOR">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Control de Asistencia</div>
+      <nav id="menu"></nav>
+      <button id="btnSalir" class="btn btn-secundario">Cerrar sesión</button>
+    </aside>
+
+    <div class="contenido">
+      <header class="topbar">
+        <h2>Marcar asistencia</h2>
+        <div class="usuario-info">
+          <span id="nombreUsuario"></span>
+          <span id="rolUsuario" class="rol-tag"></span>
+        </div>
+      </header>
+
+      <main class="pagina">
+        <section class="grid-2">
+
+          <!-- Tarjeta 1: Reloj y datos -->
+          <div class="card">
+            <h3>Hora actual</h3>
+            <div id="reloj" class="reloj">--:--:--</div>
+            <div id="fecha" class="fecha"></div>
+            <p class="dato-empleado"><span>Empleado:</span> <strong id="datoNombre"></strong></p>
+            <p class="dato-empleado"><span>Código:</span> <strong id="datoCodigo"></strong></p>
+            <p class="dato-empleado"><span>Horario:</span> <strong id="datoHorario"></strong></p>
+          </div>
+
+          <!-- Tarjeta 2: Token y marcación -->
+          <div class="card">
+            <h3>Registrar marcación</h3>
+            <p class="dato-empleado"><span>Paso 1: genera tu token de autorización (válido 60 segundos).</span></p>
+
+            <div id="tokenCaja" class="token-caja">
+              <div id="tokenCodigo" class="token-codigo">------</div>
+              <div id="tokenEstado" class="token-estado">Sin token generado</div>
+            </div>
+
+            <button id="btnToken" class="btn btn-secundario btn-bloque">Generar token</button>
+
+            <p class="dato-empleado" style="margin-top:16px"><span>Paso 2: registra tu marcación.</span></p>
+            <div class="acciones-marcar">
+              <button id="btnEntrada" class="btn btn-exito">Marcar entrada</button>
+              <button id="btnSalida" class="btn btn-primario">Marcar salida</button>
+            </div>
+
+            <div id="alerta" class="alerta"></div>
+          </div>
+        </section>
+
+        <!-- Marcaciones del día -->
+        <section class="card">
+          <h3>Mis marcaciones de hoy</h3>
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr><th>Tipo</th><th>Hora</th><th>Origen</th><th>Token usado</th></tr>
+              </thead>
+              <tbody id="tablaMarcaciones"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/marcar.js"></script>
+</body>
+</html>

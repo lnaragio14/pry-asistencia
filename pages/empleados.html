@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empleados | Control de Asistencia</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-roles="ADMINISTRADOR">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Control de Asistencia</div>
+      <nav id="menu"></nav>
+      <button id="btnSalir" class="btn btn-secundario">Cerrar sesión</button>
+    </aside>
+
+    <div class="contenido">
+      <header class="topbar">
+        <h2>Empleados</h2>
+        <div class="usuario-info">
+          <span id="nombreUsuario"></span>
+          <span id="rolUsuario" class="rol-tag"></span>
+        </div>
+      </header>
+
+      <main class="pagina">
+        <section class="card">
+          <div class="encabezado-seccion">
+            <h3>Listado de empleados</h3>
+            <button id="btnNuevo" class="btn btn-primario">+ Nuevo empleado</button>
+          </div>
+
+          <div class="filtros">
+            <div class="form-grupo" style="flex:1">
+              <label for="buscador">Buscar</label>
+              <input type="text" id="buscador" placeholder="Nombre, código o DNI">
+            </div>
+            <div class="form-grupo">
+              <label for="filtroActivo">Estado</label>
+              <select id="filtroActivo">
+                <option value="">Todos</option>
+                <option value="activos">Activos</option>
+                <option value="inactivos">Inactivos</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="alerta" class="alerta"></div>
+
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Código</th><th>Nombre</th><th>DNI</th><th>Área</th><th>Cargo</th>
+                  <th>Horario</th><th>Supervisor</th><th>Estado</th><th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaEmpleados"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal: registrar / editar empleado -->
+  <div id="modalEmpleado" class="modal-fondo">
+    <div class="card modal modal-grande">
+      <h3 id="tituloModal">Nuevo empleado</h3>
+      <p>Los campos marcados con * son obligatorios.</p>
+
+      <div class="form-fila">
+        <div class="form-grupo">
+          <label for="codigo">Código</label>
+          <input type="text" id="codigo" readonly>
+        </div>
+        <div class="form-grupo">
+          <label for="dni">DNI *</label>
+          <input type="text" id="dni" maxlength="8" placeholder="8 dígitos">
+        </div>
+      </div>
+      <div class="form-fila">
+        <div class="form-grupo">
+          <label for="nombres">Nombres *</label>
+          <input type="text" id="nombres">
+        </div>
+        <div class="form-grupo">
+          <label for="apellidos">Apellidos *</label>
+          <input type="text" id="apellidos">
+        </div>
+      </div>
+      <div class="form-fila">
+        <div class="form-grupo">
+          <label for="area">Área *</label>
+          <select id="area">
+            <option value="">Seleccione</option>
+            <option>Ventas</option>
+            <option>Operaciones</option>
+            <option>Sistemas</option>
+            <option>Recursos Humanos</option>
+          </select>
+        </div>
+        <div class="form-grupo">
+          <label for="cargo">Cargo *</label>
+          <input type="text" id="cargo">
+        </div>
+      </div>
+      <div class="form-fila">
+        <div class="form-grupo">
+          <label for="horario">Horario asignado *</label>
+          <select id="horario"></select>
+        </div>
+        <div class="form-grupo">
+          <label for="supervisor">Supervisor</label>
+          <select id="supervisor"></select>
+        </div>
+      </div>
+
+      <div id="errorModal" class="mensaje-error"></div>
+      <div class="modal-botones">
+        <button id="btnCancelar" class="btn btn-secundario">Cancelar</button>
+        <button id="btnGuardar" class="btn btn-primario">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/empleados.js"></script>
+</body>
+</html>

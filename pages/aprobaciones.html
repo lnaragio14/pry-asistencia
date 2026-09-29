@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprobar horas extras | Control de Asistencia</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-roles="SUPERVISOR">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Control de Asistencia</div>
+      <nav id="menu"></nav>
+      <button id="btnSalir" class="btn btn-secundario">Cerrar sesión</button>
+    </aside>
+
+    <div class="contenido">
+      <header class="topbar">
+        <h2>Aprobar horas extras</h2>
+        <div class="usuario-info">
+          <span id="nombreUsuario"></span>
+          <span id="rolUsuario" class="rol-tag"></span>
+        </div>
+      </header>
+
+      <main class="pagina">
+        <section class="card">
+          <h3>Solicitudes del equipo <span id="contadorPendientes" class="contador">0</span></h3>
+
+          <div class="filtros">
+            <div class="form-grupo">
+              <label for="filtroEstado">Mostrar</label>
+              <select id="filtroEstado">
+                <option value="PENDIENTE">Pendientes</option>
+                <option value="APROBADA">Aprobadas</option>
+                <option value="RECHAZADA">Rechazadas</option>
+                <option value="TODAS">Todas</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="alerta" class="alerta"></div>
+
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Empleado</th><th>Fecha</th><th>Horario</th><th>Horas</th>
+                  <th>Motivo</th><th>Estado</th><th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaSolicitudes"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal de rechazo -->
+  <div id="modalRechazo" class="modal-fondo">
+    <div class="card modal">
+      <h3>Rechazar solicitud</h3>
+      <p id="modalDetalle"></p>
+      <div class="form-grupo">
+        <label for="comentario">Motivo del rechazo</label>
+        <textarea id="comentario" placeholder="Explica por qué se rechaza (mínimo 5 caracteres)"></textarea>
+      </div>
+      <div id="errorModal" class="mensaje-error"></div>
+      <div class="modal-botones">
+        <button id="btnCancelar" class="btn btn-secundario">Cancelar</button>
+        <button id="btnConfirmarRechazo" class="btn btn-eliminar">Rechazar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/aprobaciones.js"></script>
+</body>
+</html>

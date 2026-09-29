@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi asistencia | Control de Asistencia</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-roles="EMPLEADO">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Control de Asistencia</div>
+      <nav id="menu"></nav>
+      <button id="btnSalir" class="btn btn-secundario">Cerrar sesión</button>
+    </aside>
+
+    <div class="contenido">
+      <header class="topbar">
+        <h2>Mi asistencia</h2>
+        <div class="usuario-info">
+          <span id="nombreUsuario"></span>
+          <span id="rolUsuario" class="rol-tag"></span>
+        </div>
+      </header>
+
+      <main class="pagina">
+        <!-- Resumen del periodo -->
+        <section class="grid-indicadores">
+          <div class="card indicador verde"><span>Días asistidos</span><strong id="resAsistidos">0</strong></div>
+          <div class="card indicador naranja"><span>Tardanzas</span><strong id="resTardanzas">0</strong></div>
+          <div class="card indicador rojo"><span>Faltas</span><strong id="resFaltas">0</strong></div>
+          <div class="card indicador"><span>Horas trabajadas</span><strong id="resHoras">0</strong></div>
+        </section>
+
+        <section class="card">
+          <h3>Historial</h3>
+
+          <div class="filtros">
+            <div class="form-grupo">
+              <label for="desde">Desde</label>
+              <input type="date" id="desde">
+            </div>
+            <div class="form-grupo">
+              <label for="hasta">Hasta</label>
+              <input type="date" id="hasta">
+            </div>
+            <button id="btnFiltrar" class="btn btn-primario">Filtrar</button>
+            <button id="btnLimpiar" class="btn btn-secundario">Limpiar</button>
+          </div>
+
+          <div id="alerta" class="alerta"></div>
+
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr><th>Fecha</th><th>Entrada</th><th>Salida</th><th>Horas</th><th>Estado</th></tr>
+              </thead>
+              <tbody id="tablaHistorial"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/mi-asistencia.js"></script>
+</body>
+</html>

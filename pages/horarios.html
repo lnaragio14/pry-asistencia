@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horarios | Control de Asistencia</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-roles="ADMINISTRADOR">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Control de Asistencia</div>
+      <nav id="menu"></nav>
+      <button id="btnSalir" class="btn btn-secundario">Cerrar sesión</button>
+    </aside>
+
+    <div class="contenido">
+      <header class="topbar">
+        <h2>Horarios</h2>
+        <div class="usuario-info">
+          <span id="nombreUsuario"></span>
+          <span id="rolUsuario" class="rol-tag"></span>
+        </div>
+      </header>
+
+      <main class="pagina">
+        <section class="card" style="margin-bottom:24px">
+          <h3 id="tituloForm">Nuevo horario</h3>
+
+          <form id="formHorario">
+            <div class="form-fila">
+              <div class="form-grupo">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" placeholder="Ej. Turno noche">
+              </div>
+              <div class="form-grupo">
+                <label for="entrada">Hora de entrada *</label>
+                <input type="time" id="entrada">
+              </div>
+              <div class="form-grupo">
+                <label for="salida">Hora de salida *</label>
+                <input type="time" id="salida">
+              </div>
+            </div>
+            <div class="form-fila">
+              <div class="form-grupo">
+                <label for="dias">Días laborables *</label>
+                <select id="dias">
+                  <option value="LUN-VIE">Lunes a viernes</option>
+                  <option value="LUN-SAB">Lunes a sábado</option>
+                  <option value="LUN-DOM">Lunes a domingo</option>
+                </select>
+              </div>
+              <div class="form-grupo">
+                <label for="tolerancia">Tolerancia (minutos) *</label>
+                <input type="number" id="tolerancia" min="0" max="30" value="10">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primario">Guardar horario</button>
+            <button type="button" id="btnCancelarEdicion" class="btn btn-secundario" style="display:none">Cancelar edición</button>
+            <div id="alerta" class="alerta"></div>
+          </form>
+        </section>
+
+        <section class="card">
+          <h3>Horarios registrados</h3>
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Nombre</th><th>Horario</th><th>Jornada</th><th>Días</th>
+                  <th>Tolerancia</th><th>Empleados asignados</th><th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaHorarios"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/horarios.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exportar datos | Control de Asistencia</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-roles="ADMINISTRADOR">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">Control de Asistencia</div>
+      <nav id="menu"></nav>
+      <button id="btnSalir" class="btn btn-secundario">Cerrar sesión</button>
+    </aside>
+
+    <div class="contenido">
+      <header class="topbar">
+        <h2>Exportar datos</h2>
+        <div class="usuario-info">
+          <span id="nombreUsuario"></span>
+          <span id="rolUsuario" class="rol-tag"></span>
+        </div>
+      </header>
+
+      <main class="pagina">
+        <section class="grid-indicadores">
+          <div class="card indicador"><span>Registros</span><strong id="indRegistros">0</strong></div>
+          <div class="card indicador verde"><span>Horas trabajadas</span><strong id="indHoras">0</strong></div>
+          <div class="card indicador morado"><span>Horas extras aprobadas</span><strong id="indExtras">0</strong></div>
+        </section>
+
+        <section class="card">
+          <h3>Asistencia consolidada</h3>
+
+          <div class="filtros">
+            <div class="form-grupo">
+              <label for="desde">Desde</label>
+              <input type="date" id="desde">
+            </div>
+            <div class="form-grupo">
+              <label for="hasta">Hasta</label>
+              <input type="date" id="hasta">
+            </div>
+            <button id="btnVistaPrevia" class="btn btn-secundario">Vista previa</button>
+            <button id="btnDescargar" class="btn btn-exito">Descargar CSV</button>
+          </div>
+
+          <div id="alerta" class="alerta"></div>
+
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Código</th><th>Empleado</th><th>Área</th><th>Fecha</th><th>Entrada</th>
+                  <th>Salida</th><th>Horas</th><th>Estado</th><th>H. extras</th>
+                </tr>
+              </thead>
+              <tbody id="tablaExportar"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/datos.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/exportar.js"></script>
+</body>
+</html>

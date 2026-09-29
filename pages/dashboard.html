@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Control de Asistencia</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-roles="SUPERVISOR,ADMINISTRADOR">
+  <div class="layout">
+
+    <!-- Menú lateral -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">Control de Asistencia</div>
+      <nav id="menu"></nav>
+      <button id="btnSalir" class="btn btn-secundario">Cerrar sesión</button>
+    </aside>
+
+    <div class="contenido">
+      <!-- Barra superior -->
+      <header class="topbar">
+        <h2>Dashboard</h2>
+        <div class="usuario-info">
+          <span id="nombreUsuario"></span>
+          <span id="rolUsuario" class="rol-tag"></span>
+        </div>
+      </header>
+
+      <!-- Contenido de la página -->
+      <main class="pagina">
+        <section class="grid-indicadores">
+          <div class="card indicador verde"><span>Presentes</span><strong id="indPresentes">0</strong></div>
+          <div class="card indicador naranja"><span>Tardanzas</span><strong id="indTardanzas">0</strong></div>
+          <div class="card indicador rojo"><span>Faltas</span><strong id="indFaltas">0</strong></div>
+          <div class="card indicador"><span>Horas trabajadas</span><strong id="indHoras">0</strong></div>
+          <div class="card indicador morado"><span>Solicitudes pendientes</span><strong id="indPendientes">0</strong></div>
+        </section>
+
+        <section class="card">
+          <h3>Asistencia de hoy</h3>
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Empleado</th>
+                  <th>Área</th>
+                  <th>Entrada</th>
+                  <th>Salida</th>
+                  <th>Horas</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="tablaAsistencia"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- El orden importa: primero datos, luego app, luego la página -->
+  <script src="../js/datos.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
